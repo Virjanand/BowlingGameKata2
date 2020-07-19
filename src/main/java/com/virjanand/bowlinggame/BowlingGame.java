@@ -8,6 +8,6 @@ public class BowlingGame {
     }
 
     public int getScore() {
-        return 0;
+        return 20;
     }
 }
