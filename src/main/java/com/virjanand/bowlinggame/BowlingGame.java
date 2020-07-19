@@ -3,11 +3,14 @@ package com.virjanand.bowlinggame;
 import java.util.List;
 
 public class BowlingGame {
-    public BowlingGame(List<String> asList) {
 
+    List<String> rolls;
+
+    public BowlingGame(List<String> rolls) {
+        this.rolls = rolls;
     }
 
     public int getScore() {
-        return 20;
+        return rolls.stream().mapToInt(Integer::valueOf).sum();
     }
 }
