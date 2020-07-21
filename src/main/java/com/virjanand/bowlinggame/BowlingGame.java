@@ -11,6 +11,6 @@ public class BowlingGame {
     }
 
     public int getScore() {
-        return rolls.stream().mapToInt(Integer::valueOf).sum();
+        return rolls.stream().filter(roll -> !roll.equals("-")).mapToInt(Integer::valueOf).sum();
     }
 }
