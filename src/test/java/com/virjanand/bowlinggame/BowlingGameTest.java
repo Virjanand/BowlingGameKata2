@@ -1,15 +1,28 @@
 package com.virjanand.bowlinggame;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BowlingGameTest {
 
-    @Test
-    void sumRolls() {
-        BowlingGame game = new BowlingGame(asList("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"));
-        assertThat(game.getScore()).isEqualTo(20);
+    private static Stream<Arguments> rollsWithScores() {
+        return Stream.of(
+                Arguments.of(asList("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"), 20, "Sum the regular rolls")
+        );
+    }
+
+    @ParameterizedTest(name = "{2}: {0} -> {1}")
+    @MethodSource("rollsWithScores")
+    void scoringRules(List<String> rolls, int expectedScore, String name) {
+        BowlingGame game = new BowlingGame(rolls);
+        assertThat(game.getScore()).isEqualTo(expectedScore);
     }
 }
