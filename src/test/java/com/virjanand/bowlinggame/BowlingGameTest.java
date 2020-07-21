@@ -15,7 +15,8 @@ public class BowlingGameTest {
 
     private static Stream<Arguments> rollsWithScores() {
         return Stream.of(
-                Arguments.of(asList("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"), 20, "Sum the regular rolls")
+                Arguments.of(asList("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"), 20, "Sum the regular rolls"),
+                Arguments.of(asList("-", "-", "-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-"), 0, "Dash for 0 points")
         );
     }
 
