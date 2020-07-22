@@ -10,7 +10,14 @@ public class BowlingGame {
         this.rolls = rolls;
     }
 
+    private static boolean hitPins(String roll) {
+        return !roll.equals("-");
+    }
+
     public int getScore() {
-        return rolls.stream().filter(roll -> !roll.equals("-")).mapToInt(Integer::valueOf).sum();
+        return rolls.stream()
+                .filter(BowlingGame::hitPins)
+                .mapToInt(Integer::valueOf)
+                .sum();
     }
 }
