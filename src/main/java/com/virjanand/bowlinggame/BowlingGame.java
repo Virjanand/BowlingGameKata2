@@ -17,7 +17,15 @@ public class BowlingGame {
     public int getScore() {
         return rolls.stream()
                 .filter(BowlingGame::hitPins)
+                .map(this::resolveStrike)
                 .mapToInt(Integer::valueOf)
                 .sum();
+    }
+
+    private int resolveStrike(String s) {
+        if (s.equals("X")) {
+            return 10;
+        }
+        return Integer.parseInt(s);
     }
 }
