@@ -22,10 +22,10 @@ public class BowlingGame {
                 .sum();
     }
 
-    private int resolveStrike(String s) {
-        if (s.equals("X")) {
-            return 10;
+    private String resolveStrike(String roll) {
+        if (roll.equals("X")) {
+            return "10";
         }
-        return Integer.parseInt(s);
+        return roll;
     }
 }
