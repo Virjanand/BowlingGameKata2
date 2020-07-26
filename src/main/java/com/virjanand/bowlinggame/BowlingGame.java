@@ -15,11 +15,19 @@ public class BowlingGame {
     }
 
     public int getScore() {
-        return rolls.stream()
-                .filter(BowlingGame::hitPins)
-                .map(this::resolveStrike)
-                .mapToInt(Integer::valueOf)
-                .sum();
+        int sum = 0;
+        for (int i = 0; i < rolls.size(); i++) {
+            String roll = rolls.get(i);
+            if (hitPins(roll)) {
+                String s = resolveStrike(roll);
+                int valueOf = Integer.parseInt(s);
+                sum += valueOf;
+                if (roll.equals("X") && !rolls.get(i + 1).equals("-") && !rolls.get(i + 2).equals("-")) {
+                    sum += Integer.parseInt(rolls.get(i + 1)) + Integer.parseInt(rolls.get(i + 2));
+                }
+            }
+        }
+        return sum;
     }
 
     private String resolveStrike(String roll) {
