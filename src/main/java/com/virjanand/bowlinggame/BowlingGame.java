@@ -22,8 +22,8 @@ public class BowlingGame {
                 String s = resolveStrike(roll);
                 int valueOf = Integer.parseInt(s);
                 sum += valueOf;
-                if (roll.equals("X") && !rolls.get(i + 1).equals("-") && !rolls.get(i + 2).equals("-")) {
-                    sum += Integer.parseInt(rolls.get(i + 1)) + Integer.parseInt(rolls.get(i + 2));
+                if (roll.equals("X")) {
+                    sum += Integer.parseInt(resolveStrike(rolls.get(i + 1))) + Integer.parseInt(resolveStrike(rolls.get(i + 2)));
                 }
             }
         }
@@ -31,6 +31,9 @@ public class BowlingGame {
     }
 
     private String resolveStrike(String roll) {
+        if (roll.equals("-")) {
+            return "0";
+        }
         if (roll.equals("X")) {
             return "10";
         }
