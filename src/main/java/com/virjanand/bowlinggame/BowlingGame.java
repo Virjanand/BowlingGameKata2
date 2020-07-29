@@ -10,27 +10,24 @@ public class BowlingGame {
         this.rolls = rolls;
     }
 
-    private static boolean hitPins(String roll) {
-        return !roll.equals("-");
-    }
-
     public int getScore() {
         int sum = 0;
-        for (int i = 0; i < rolls.size(); i++) {
-            String roll = rolls.get(i);
-            if (hitPins(roll)) {
-                String s = resolveStrike(roll);
-                int valueOf = Integer.parseInt(s);
+        for (int index = 0; index < rolls.size(); index++) {
+            String roll = rolls.get(index);
+                int valueOf = convertRollToNumber(index, 0);
                 sum += valueOf;
                 if (roll.equals("X")) {
-                    sum += Integer.parseInt(resolveStrike(rolls.get(i + 1))) + Integer.parseInt(resolveStrike(rolls.get(i + 2)));
+                    sum += convertRollToNumber(index, 1) + convertRollToNumber(index, 2);
                 }
-            }
         }
         return sum;
     }
 
-    private String resolveStrike(String roll) {
+    private int convertRollToNumber(int index, int increment) {
+        return Integer.parseInt(resolveSpecialCharacter(rolls.get(index + increment)));
+    }
+
+    private String resolveSpecialCharacter(String roll) {
         if (roll.equals("-")) {
             return "0";
         }
