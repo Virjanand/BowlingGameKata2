@@ -19,6 +19,9 @@ public class BowlingGame {
                 if (roll.equals("X")) {
                     sum += convertRollToNumber(index, 1) + convertRollToNumber(index, 2);
                 }
+            if (roll.equals("/")) {
+                sum -= convertRollToNumber(index, -1);
+            }
         }
         return sum;
     }
@@ -32,6 +35,9 @@ public class BowlingGame {
             return "0";
         }
         if (roll.equals("X")) {
+            return "10";
+        }
+        if (roll.equals("/")) {
             return "10";
         }
         return roll;
