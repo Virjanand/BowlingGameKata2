@@ -14,11 +14,11 @@ public class BowlingGame {
         int sum = 0;
         for (int index = 0; index < rolls.size(); index++) {
             String roll = rolls.get(index);
-                int valueOf = convertRollToNumber(index, 0);
-                sum += valueOf;
-                if (roll.equals("X")) {
-                    sum += convertRollToNumber(index, 1) + convertRollToNumber(index, 2);
-                }
+            int valueOf = convertRollToNumber(index, 0);
+            sum += valueOf;
+            if (roll.equals("X")) {
+                sum += convertRollToNumber(index, 1) + convertRollToNumber(index, 2);
+            }
             if (roll.equals("/")) {
                 sum -= convertRollToNumber(index, -1);
             }
