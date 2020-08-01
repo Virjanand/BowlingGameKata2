@@ -13,21 +13,33 @@ public class BowlingGame {
     public int getScore() {
         int sum = 0;
         for (int index = 0; index < rolls.size(); index++) {
-            String roll = rolls.get(index);
-            int valueOf = convertRollToNumber(index, 0);
-            sum += valueOf;
-            if (roll.equals("X")) {
-                sum += convertRollToNumber(index, 1) + convertRollToNumber(index, 2);
-            }
-            if (roll.equals("/")) {
-                sum -= convertRollToNumber(index, -1);
-            }
+            sum += convertRoll(index);
+            sum += processStrike(index);
+            sum -= processSpare(sum, index);
         }
         return sum;
     }
 
-    private int convertRollToNumber(int index, int increment) {
-        return Integer.parseInt(resolveSpecialCharacter(rolls.get(index + increment)));
+    private int processSpare(int sum, int index) {
+        if (rolls.get(index).equals("/")) {
+            return convertRollWithOffset(index, -1);
+        }
+        return 0;
+    }
+
+    private int processStrike(int index) {
+        if (rolls.get(index).equals("X")) {
+            return convertRollWithOffset(index, 1) + convertRollWithOffset(index, 2);
+        }
+        return 0;
+    }
+
+    private int convertRoll(int index) {
+        return convertRollWithOffset(index, 0);
+    }
+
+    private int convertRollWithOffset(int index, int offset) {
+        return Integer.parseInt(resolveSpecialCharacter(rolls.get(index + offset)));
     }
 
     private String resolveSpecialCharacter(String roll) {
