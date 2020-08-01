@@ -15,12 +15,12 @@ public class BowlingGame {
         for (int index = 0; index < rolls.size(); index++) {
             sum += convertRoll(index);
             sum += processStrike(index);
-            sum -= processSpare(sum, index);
+            sum -= processSpare(index);
         }
         return sum;
     }
 
-    private int processSpare(int sum, int index) {
+    private int processSpare(int index) {
         if (rolls.get(index).equals("/")) {
             return convertRollWithOffset(index, -1);
         }
