@@ -22,7 +22,7 @@ public class BowlingGame {
 
     private int processSpare(int index) {
         if (rolls.get(index).equals("/")) {
-            return convertRollWithOffset(index, -1);
+            return convertRollWithOffset(index, -1) - convertRollWithOffset(index, 1);
         }
         return 0;
     }
