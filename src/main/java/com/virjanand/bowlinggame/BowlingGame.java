@@ -14,27 +14,31 @@ public class BowlingGame {
         int sum = 0;
         for (int index = 0; index < rolls.size(); index++) {
             sum += convertRoll(index);
-            sum += processStrike(index);
-            sum += processSpare(index);
+            sum += extraPointsStrike(index);
+            sum += extraPointsSpare(index);
         }
         return sum;
     }
 
-    // Spare is 10 points for knocking all pins down in 2 throws
-    // "/" is converted to 10 points. Need to remove previous roll
-    // The next roll is added to the spare as bonus score
-    private int processSpare(int index) {
-        if (rolls.get(index).equals("/")) {
-            return -convertRollWithOffset(index, -1) + convertRollWithOffset(index, 1);
+    /**
+     * Strike is 10 points for knocking all pins down in 1 throw
+     * The next 2 rolls are added to the strike as bonus score
+     */
+    private int extraPointsStrike(int index) {
+        if (rolls.get(index).equals("X")) {
+            return convertRollWithOffset(index, 1) + convertRollWithOffset(index, 2);
         }
         return 0;
     }
 
-    // Strike is 10 points for knocking all pins down in 1 throw
-    // The next 2 rolls are added to the strike as bonus score
-    private int processStrike(int index) {
-        if (rolls.get(index).equals("X")) {
-            return convertRollWithOffset(index, 1) + convertRollWithOffset(index, 2);
+    /**
+     * Spare is 10 points for knocking all pins down in 2 throws
+     * "/" is converted to 10 points. Need to remove previous roll
+     * The next roll is added to the spare as bonus score
+     */
+    private int extraPointsSpare(int index) {
+        if (rolls.get(index).equals("/")) {
+            return -convertRollWithOffset(index, -1) + convertRollWithOffset(index, 1);
         }
         return 0;
     }
