@@ -18,9 +18,10 @@ public class BowlingGameTest {
                 Arguments.of(asList("-", "-", "-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-"), 0, "Miss(-) is 0 points"),
                 Arguments.of(asList("X", "-", "-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-"), 10, "Strike(X) is 10 points"),
                 Arguments.of(asList("X", "1", "1", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-","-", "-"), 14, "Add next two rolls to strike"),
-                Arguments.of(asList("X", "X", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 33, "strike after strike is added as 10 points"),
-                Arguments.of(asList("1", "/", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 10, "spare (roll and /) together ten points"),
-                Arguments.of(asList("1", "/", "1", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 13, "add next roll to spare score")
+                Arguments.of(asList("X", "X", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 33, "Strike after strike is added as 10 points"),
+                Arguments.of(asList("1", "/", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 10, "Spare (roll and /) together ten points"),
+                Arguments.of(asList("1", "/", "1", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 13, "Add next roll to spare score"),
+                Arguments.of(asList("-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "X", "X", "X"), 50, "Extra rolls for last strike are not treated as strikes")
         );
     }
 
