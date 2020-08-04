@@ -25,7 +25,7 @@ public class BowlingGame {
      * The next 2 rolls are added to the strike as bonus score
      */
     private int extraPointsStrike(int index) {
-        if (rolls.get(index).equals("X")) {
+        if (rolls.get(index).equals("X") && index < rolls.size() - 2) {
             return convertRollWithOffset(index, 1) + convertRollWithOffset(index, 2);
         }
         return 0;
