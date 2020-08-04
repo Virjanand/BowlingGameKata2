@@ -25,10 +25,18 @@ public class BowlingGame {
      * The next 2 rolls are added to the strike as bonus score
      */
     private int extraPointsStrike(int index) {
-        if (rolls.get(index).equals("X") && index < rolls.size() - 2) {
+        if (rollIsStrike(index) && rollIsNotAnExtraRoll(index)) {
             return convertRollWithOffset(index, 1) + convertRollWithOffset(index, 2);
         }
         return 0;
+    }
+
+    private boolean rollIsNotAnExtraRoll(int index) {
+        return index < rolls.size() - 2;
+    }
+
+    private boolean rollIsStrike(int index) {
+        return rolls.get(index).equals("X");
     }
 
     /**
@@ -37,10 +45,14 @@ public class BowlingGame {
      * The next roll is added to the spare as bonus score
      */
     private int extraPointsSpare(int index) {
-        if (rolls.get(index).equals("/")) {
+        if (rollIsSpare(index)) {
             return -convertRollWithOffset(index, -1) + convertRollWithOffset(index, 1);
         }
         return 0;
+    }
+
+    private boolean rollIsSpare(int index) {
+        return rolls.get(index).equals("/");
     }
 
     private int convertRoll(int index) {
