@@ -21,7 +21,8 @@ public class BowlingGameTest {
                 Arguments.of(asList("X", "X", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 33, "Strike after strike is added as 10 points"),
                 Arguments.of(asList("1", "/", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 10, "Spare (roll and /) together ten points"),
                 Arguments.of(asList("1", "/", "1", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"), 13, "Add next roll to spare score"),
-                Arguments.of(asList("-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "X", "X", "X"), 50, "Extra rolls for last strike are not treated as strikes")
+                Arguments.of(asList("-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "X", "X", "X"), 30, "Extra rolls for last strike are not treated as strikes")
+//                Arguments.of(asList("-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "/", "X"), 20, "Extra roll for last spare is not treated as strike")
         );
     }
 
