@@ -32,7 +32,7 @@ public class BowlingGame {
     }
 
     private boolean rollIsNotAnExtraRoll(int index) {
-        return index < rolls.size() - 2;
+        return index < rolls.size() - 3;
     }
 
     private boolean rollIsStrike(int index) {
