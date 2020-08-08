@@ -31,12 +31,12 @@ public class BowlingGame {
         return 0;
     }
 
-    private boolean rollIsNotLastOrExtraRollAfterStrike(int index) {
-        return index < rolls.size() - 3;
-    }
-
     private boolean rollIsStrike(int index) {
         return rolls.get(index).equals("X");
+    }
+
+    private boolean rollIsNotLastOrExtraRollAfterStrike(int index) {
+        return index < rolls.size() - 3;
     }
 
     /**
@@ -45,7 +45,7 @@ public class BowlingGame {
      * The next roll is added to the spare as bonus score
      */
     private int extraPointsSpare(int index) {
-        if (rollIsSpare(index) && index < rolls.size() - 2) {
+        if (rollIsSpare(index) && rollIsNotLastOrExtraRollAfterSpare(index)) {
             return -convertRollWithOffset(index, -1) + convertRollWithOffset(index, 1);
         }
         return 0;
@@ -53,6 +53,10 @@ public class BowlingGame {
 
     private boolean rollIsSpare(int index) {
         return rolls.get(index).equals("/");
+    }
+
+    private boolean rollIsNotLastOrExtraRollAfterSpare(int index) {
+        return index < rolls.size() - 2;
     }
 
     private int convertRoll(int index) {
