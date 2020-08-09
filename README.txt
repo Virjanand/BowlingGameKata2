@@ -38,4 +38,4 @@ X X X X X X X X X X X X (12 rolls: 12 strikes) = 10 frames * 30 points = 300
 ~- [ ] refactor if statements to use polymorphism~
 - [x] add next roll to spare score: "1", "/", "1", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-" -> 13
 - [x] check for strikes at end: "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "X", "X", "X" -> getScore -> 60
-- [ ] check for spare at end: "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "/", "X" -> getScore -> 20
+- [x] check for spare at end: "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "/", "X" -> getScore -> 20
